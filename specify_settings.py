@@ -45,7 +45,7 @@ SPECIFY_CONFIG_DIR = os.environ.get(
 # want to access which must be a Specify database already
 # be initialized from a backup or by using the Specify Wizard
 # from a Specify 6 installation.
-DATABASE_NAME = 'SpecifyDB'
+DATABASE_NAME = 'specify'
 
 # Database hostname or IP. Will use localhost:3306 by default.
 DATABASE_HOST = ''
@@ -101,8 +101,8 @@ SUPPORT_LOGIN_TTL = 300
 
 # Usage stats are transmitted to the following address.
 # Set to None to disable.
-STATS_URL = "https://stats.specifycloud.org/capture"
-STATS_2_URL = "pj9lpoo1pc.execute-api.us-east-1.amazonaws.com" # "https://stats-2.specifycloud.org/prod/AggrgatedSp7Stats"
+STATS_URL = None # "https://stats.specifycloud.org/capture"
+STATS_2_URL = None # "pj9lpoo1pc.execute-api.us-east-1.amazonaws.com" # "https://stats-2.specifycloud.org/prod/AggrgatedSp7Stats"
 
 # Workbench uploader log directory.
 # Must exist and be writeable by the web server process.
@@ -144,11 +144,11 @@ OAUTH_LOGIN_PROVIDERS = {
     # },
 
     # # A working Phantauth config for test purposes only.
-     'phantauth': {
-         'title': "Phantauth",
-         'config': "https://phantauth.net",
-         'scope': "openid profile email",
-         'client_id': "latlux~mqs8zoig_5e",
-         'client_secret': "82yHd4XA",
-     },
+    #  'phantauth': {
+    #      'title': "Phantauth",
+    #      'config': "https://phantauth.net",
+    #      'scope': "openid profile email",
+    #      'client_id': "latlux~mqs8zoig_5e",
+    #      'client_secret': "82yHd4XA",
+    #  },
 }
