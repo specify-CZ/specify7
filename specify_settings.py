@@ -76,7 +76,7 @@ WEB_ATTACHMENT_COLLECTION = None
 SEPARATE_WEB_ATTACHMENT_FOLDERS = False
 
 # Set to true if the asset server requires auth token to get files.
-WEB_ATTACHMENT_REQUIRES_KEY_FOR_GET = False
+WEB_ATTACHMENT_REQUIRES_KEY_FOR_GET = True
 
 # Report runner service
 REPORT_RUNNER_HOST = ''
