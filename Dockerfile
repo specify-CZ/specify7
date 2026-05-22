@@ -4,6 +4,7 @@ LABEL description="Individual build of Specify 7 docker image"
 
 COPY --chown=specify:specify docker-entrypoint.sh /opt/specify7/docker-entrypoint.sh
 COPY --chown=specify:specify specify_settings.py /opt/specify7/settings/specify_settings.py
+COPY --chown=specify:specify local_specify_settings.py /opt/specify7/settings/local_specify_settings.py
 
 
 USER root
