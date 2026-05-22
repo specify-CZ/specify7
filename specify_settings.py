@@ -150,12 +150,12 @@ OAUTH_LOGIN_PROVIDERS = {
     #     'scope': "openid email",
     # },
 
-    # # A working Phantauth config for test purposes only.
-    #  'phantauth': {
-    #      'title': "Phantauth",
-    #      'config': "https://phantauth.net",
-    #      'scope': "openid profile email",
-    #      'client_id': "latlux~mqs8zoig_5e",
-    #      'client_secret': "82yHd4XA",
-    #  },
+    # Redirect uri = http://localhost/accounts/oic_callback/
+     'cesnet': {
+         'title': "E-infra OpenID",
+         'config': "https://login.e-infra.cz/oidc",
+         'scope': "openid email",
+         'client_id': "xx",
+         'client_secret': "yy",
+     }
 }
