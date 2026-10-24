@@ -1,8 +1,6 @@
 # specify7
-Specify7 no root image - the base image is checked [once per week](.github/dependabot.yml#L6) for updates and :production [Specify 7.11](https://github.com/specify/specify7) service image is rebuild.
-* use unix socket instead of TCP
-
-
+[Specify7](https://github.com/specify/specify7) no-root docker image.
+ 
 Documentation for curators please see [curator documentation](https://github.com/biodiversity-cz/specify7/wiki)
 
 [//]: # (obligatory branding for EOSC.CZ)
