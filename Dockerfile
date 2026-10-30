@@ -1,4 +1,4 @@
-FROM specifyconsortium/specify7-service:v7.12.1.2
+FROM specifyconsortium/specify7-service:v7.12.2
 LABEL org.opencontainers.image.source=https://github.com/biodiversity-cz/specify7
 LABEL description="Individual build of Specify 7 docker image"
 
