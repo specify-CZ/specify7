@@ -55,10 +55,15 @@ DATABASE_PORT = ''
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-OPTIONS
 DATABASE_OPTIONS = {}
 
-# The master user login. This is the MySQL user used to connect to the
-# database. This can be the same as the Specify 6 master user.
-MASTER_NAME = 'MasterUser'
-MASTER_PASSWORD = 'MasterPassword'
+# The master, migrator, and application user logins. The migrator and app
+# credentials fall back through the more privileged roles for compatibility.
+ROOT_PASSWORD = os.getenv('MYSQL_ROOT_PASSWORD', 'password')
+MASTER_NAME = os.getenv('MASTER_NAME', 'root')
+MASTER_PASSWORD = os.getenv('MASTER_PASSWORD', ROOT_PASSWORD)
+MIGRATOR_NAME = os.getenv('MIGRATOR_NAME', MASTER_NAME)
+MIGRATOR_PASSWORD = os.getenv('MIGRATOR_PASSWORD', MASTER_PASSWORD)
+APP_USER_NAME = os.getenv('APP_USER_NAME', MIGRATOR_NAME)
+APP_USER_PASSWORD = os.getenv('APP_USER_PASSWORD', MIGRATOR_PASSWORD)
 
 # The Specify web attachment server URL.
 WEB_ATTACHMENT_URL = None
@@ -77,6 +82,9 @@ SEPARATE_WEB_ATTACHMENT_FOLDERS = False
 
 # Set to true if the asset server requires auth token to get files.
 WEB_ATTACHMENT_REQUIRES_KEY_FOR_GET = True
+
+# Timeout in seconds for requests made to the asset server.
+WEB_ATTACHMENT_TIMEOUT = float(os.getenv('WEB_ATTACHMENT_TIMEOUT', 5))
 
 # Report runner service
 REPORT_RUNNER_HOST = ''
@@ -102,9 +110,13 @@ ANONYMOUS_USER = None
 # For exception logging using Sentry (https://github.com/getsentry/sentry).
 RAVEN_CONFIG = None
 
-# Support login mechanism.
-ALLOW_SUPPORT_LOGIN = False
-SUPPORT_LOGIN_TTL = 300
+# Enabling this option allows administrators with access to the
+# backend Specify instance to log in as any user for support
+# purposes without knowing their password.
+# https://speciforum.org/t/allow-support-login-documentation/2838
+ALLOW_SUPPORT_LOGIN = True
+# The amount of time in seconds each token is valid for
+SUPPORT_LOGIN_TTL = 180
 
 # Usage stats are transmitted to the following address.
 # Set to None to disable.
@@ -150,12 +162,12 @@ OAUTH_LOGIN_PROVIDERS = {
     #     'scope': "openid email",
     # },
 
-    # Redirect uri = http://localhost/accounts/oic_callback/
-     'cesnet': {
-         'title': "E-infra OpenID",
-         'config': "https://login.e-infra.cz/oidc",
-         'scope': "openid email",
-         'client_id': "xx",
-         'client_secret': "yy",
-     }
+    # # A working Phantauth config for test purposes only.
+    # 'phantauth': {
+    #     'title': "Phantauth",
+    #     'config': "https://phantauth.net",
+    #     'scope': "openid profile email",
+    #     'client_id': "latlux~mqs8zoig_5e",
+    #     'client_secret': "82yHd4XA",
+    # },
 }
